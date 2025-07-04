@@ -1,11 +1,94 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import MainLayout from '../layouts/MainLayout.astro';
+import { Image } from 'astro:assets';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+// Import the icons from the assets folder
+import innovationIcon from '../assets/Innovation_Icon.svg';
+import integrityIcon from '../assets/Integrity_Icon.svg';
+import impactIcon from '../assets/Impact_Icon.svg';
+import collaborationIcon from '../assets/Collaboration_Icon.svg';
 ---
+<MainLayout>
 
-<Layout>
-	<Welcome />
-</Layout>
+    <section id="hero" class="relative container mx-auto text-center py-24 overflow-hidden">
+        
+        <div id="hero-background-text" class="absolute inset-0 flex items-center justify-center z-[-1]"aria-hidden="true">
+            <span class="text-[25vw] font-extrabold text-white text-opacity-5">
+                APTURA
+            </span>
+        </div>
+
+        <div class="relative z-[1]">
+            <h1 class="text-6xl font-bold">We Promote Brave Startups</h1>
+            <p class="mt-4 text-xl text-gray-300">Creating, Scaling, and Acquiring Next-Generation Tech Ventures</p>
+                <div class="mt-8">
+                    <a href="/contact" class="inline-block border border-white px-6 py-2">
+                    Contact Us <span aria-hidden="true">&rarr;</span>
+                    </a>
+                </div>
+        </div>
+    </section>
+
+    <div id="notification-banner" class="container mx-auto p-4 border border-gray-700 flex justify-between items-center">
+        <p>Aptura Labs is a <strong>Pioneering Technology Studio</strong> that builds, scales, and acquires innovative SaaS and AI-powered startups.</p>
+        <button type="button" aria-label="Close banner">&times;</button>
+    </div>
+
+    <section id="intro-text" class="container mx-auto py-20 max-w-4xl text-lg space-y-6">
+        <p>Aptura Labs is a pioneering technology studio that builds, scales, and acquires innovative SaaS and AI-powered startups. Combining bold ideation, strategic acquisitions, and meticulous execution, we transform visionary concepts into market-leading ventures designed for lasting impact.</p>
+        <p>Operating across North and South America, Aptura Labs merges deep market insights, cutting-edge technology, and entrepreneurial ability to reshape industries and redefine success. Whether incubating fresh ideas or acquiring promising companies, our focus remains consistent: drive growth, foster innovation, and scale intelligently.</p>
+        <p>We don't just invest—we partner, build, and elevate.</p>
+    </section>
+
+    <section id="values" class="container mx-auto py-20">
+        <h2 class="text-5xl text-center mb-16">"Our Values"</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 max-w-5xl mx-auto">
+        
+            <div class="value-card">
+                <Image src={innovationIcon} width="48" height="48" alt="Innovation Icon" class="mb-4" />
+                <h3 class="text-3xl mb-2">Innovation</h3>
+                <p class="text-gray-300">We continuously pursue bold, original ideas and encourage creativity at every level of our organization. Innovation at Aptura Labs means staying ahead of market trends, exploring uncharted territory, and relentlessly seeking new solutions.</p>
+            </div>
+
+            <div class="value-card">
+                <Image src={integrityIcon} width="48" height="48" alt="Integrity Icon" class="mb-4" />
+                <h3 class="text-3xl mb-2">Integrity</h3>
+                <p class="text-gray-300">Our foundation is built on transparency, ethical behavior, and accountability. Integrity Guides Every Decision we make and every partnership we cultivate, ensuring trust with our employees, clients, and stakeholders.</p>
+            </div>
+
+            <div class="value-card">
+                <Image src={impactIcon} width="48" height="48" alt="Impact Icon" class="mb-4" />
+                <h3 class="text-3xl mb-2">Impact</h3>
+                <p class="text-gray-300">Creating Meaningful, Measurable Outcomes Is Central to our purpose. Every venture and acquisition at Aptura Labs is selected and developed with the clear intention of generating positive and lasting impacts for society, industries, and economies.</p>
+            </div>
+
+            <div class="value-card">
+                <Image src={collaborationIcon} width="48" height="48" alt="Collaboration Icon" class="mb-4" />
+                <h3 class="text-3xl mb-2">Collaboration</h3>
+                <p class="text-gray-300">We Value Diverse Perspectives and Understand That Collective Intelligence Leads To Superior Outcomes. Collaboration at Aptura Labs involves fostering an inclusive environment where ideas flourish, teams excel, and strategic alliances thrive.</p>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="vision" class="container mx-auto py-20">
+        <h2 class="text-5xl text-center mb-16">"Our Vision"</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div class="vision-text-block">
+                <p><strong>Aptura Labs Aspires To Cultivate A Robust,</strong> interconnected network of technology-driven ventures that sustainably shape industries, economies, and communities around the world.</p>
+            </div>
+            <div class="vision-text-block">
+                <p><strong>We Envision A Future</strong> where our innovative solutions and strategic acquisitions collectively redefine what's possible, consistently pushing the boundaries of technology, scalability, and social impact.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact-ticker" class="py-16 overflow-x-hidden">
+        <div class="ticker-track whitespace-nowrap">
+            <span class="text-4xl font-bold mx-4">CONTACT US &bull;</span>
+            <span class="text-4xl font-bold mx-4">CONTACT US &bull;</span>
+            <span class="text-4xl font-bold mx-4">CONTACT US &bull;</span>
+            <span class="text-4xl font-bold mx-4">CONTACT US &bull;</span>
+        </div>
+    </section>
+</MainLayout>

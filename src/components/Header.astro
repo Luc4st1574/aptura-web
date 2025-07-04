@@ -1,0 +1,47 @@
+---
+import { Image } from 'astro:assets';
+
+// Importing the assets
+import apturaLogo from '../assets/Aptura_Logo.svg';
+import arrowIcon from '../assets/arrow-up.svg';
+---
+
+<header id="main-header" class="w-full">
+  <div class="container mx-auto flex justify-between items-center p-4">
+
+    <nav id="header-nav-left" class="flex-1">
+      <ul class="flex items-center space-x-6">
+        <li>
+          <a href="/" class="nav-link flex items-center space-x-2">
+            <span class="dot w-2 h-2 bg-white rounded-full"></span>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="/companies" class="nav-link">Companies</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div id="logo-container" class="flex-shrink-0">
+      <a href="/" aria-label="Aptura Labs Home">
+        <Image src={apturaLogo} alt="Aptura Labs Logo" width="140" />
+      </a>
+    </div>
+
+    <nav id="header-nav-right" class="flex-1">
+      <ul class="flex items-center justify-end space-x-6">
+        <li>
+          <a href="/team" class="nav-link">Team</a>
+        </li>
+        <li>
+          <a href="/contact" class="nav-link flex items-center space-x-1">
+            <span>Contact</span>
+            <Image src={arrowIcon} alt="Arrow Icon" width="16" height="16" />
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+  </div>
+</header>
