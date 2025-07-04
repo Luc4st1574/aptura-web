@@ -1,0 +1,80 @@
+---
+import MainLayout from '../layouts/MainLayout.astro';
+import { Image } from 'astro:assets';
+import companiesData from '../data/companies.json';
+// Import the new search icon
+import searchIcon from '../assets/search_icon.svg';
+
+const companyLogos = import.meta.glob('../assets/*-logo.svg', { eager: true });
+
+function getLogo(logoFilename: string) {
+    const logoPath = `../assets/${logoFilename}`;
+    const logoModule = companyLogos[logoPath];
+
+    if (!logoModule) {
+        throw new Error(`Could not find the logo for: ${logoFilename}. Please ensure the file exists in 'src/assets/' and the name is correct in 'src/data/companies.json'.`);
+    }
+
+    return (logoModule as any).default;
+}
+---
+<MainLayout>
+    <div class="container mx-auto py-20 px-4">
+
+        <!-- Top Banner -->
+        <section id="companies-banner" class="text-center mb-16">
+            <p>WE DESIGN EXPERIENCES WITH VISIONARY LEADERS, COMBINING INNOVATION AND PRECISION.</p>
+        </section>
+
+        <!-- Page Header -->
+        <section id="companies-header" class="mb-12">
+            <div class="max-w-3xl">
+                <h2 class="text-5xl mb-4">"Our <span class="text-orange-500">Companies</span></h2>
+                <p class="text-gray-300">We Design Experiences Alongside Some Of The World's Most Influential Entrepreneurs. Our Approach Combines Vision, Innovation And Precise Execution.</p>
+            </div>
+        </section>
+
+        <!-- Search and Filters -->
+        <section id="filters" class="flex flex-col md:flex-row justify-between items-center mb-12 gap-4">
+            <!-- Updated Search Bar with Icon -->
+            <div class="search-bar relative w-full md:w-1/3">
+                <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                    <Image src={searchIcon} alt="Search Icon" width="20" height="20" />
+                </div>
+                <input type="search" placeholder="Search for companie.." class="w-full bg-gray-800 border-none rounded-full px-4 py-2 pl-10">
+            </div>
+            <div class="category-filters flex space-x-4">
+                <button class="filter-btn">AI</button>
+                <button class="filter-btn">Fintech & Crypto</button>
+                <button class="filter-btn">E-Commerce</button>
+                <button class="filter-btn">Education</button>
+            </div>
+        </section>
+
+        <!-- Companies Grid -->
+        <section id="companies-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {companiesData.map(company => (
+                    <div class="company-card bg-gray-800 rounded-lg p-6 relative">
+                        <div class="flex items-start">
+                            <div class="logo-container mr-4">
+                                <Image src={getLogo(company.logo)} alt={`${company.name} Logo`} width="60" height="60" />
+                            </div>
+                            <div class="company-info">
+                                <h3 class="text-2xl font-bold">{company.name}</h3>
+                                <p class="text-sm text-gray-400">{company.founders}</p>
+                            </div>
+                        </div>
+                        <div class="website-info border-t border-gray-700 mt-4 pt-4">
+                            <p class="text-sm">{company.website}</p>
+                        </div>
+                        <div class="category-tag absolute top-6 right-6 bg-gray-700 text-xs px-2 py-1 rounded-full">
+                            {company.category}
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </section>
+
+    </div>
+</MainLayout>

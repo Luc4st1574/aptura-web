@@ -1,0 +1,30 @@
+[
+    {
+        "name": "Framer",
+        "founders": "Garrett Camp, Philip Fung, Robin Chan",
+        "website": "www.example123.com",
+        "category": "E-Commerce",
+        "logo": "framer-logo.svg"
+    },
+    {
+        "name": "Twitch",
+        "founders": "Garrett Camp, Philip Fung, Robin Chan",
+        "website": "www.example123.com",
+        "category": "Fintech & Crypto",
+        "logo": "twitch-logo.svg"
+    },
+    {
+        "name": "Windows Inc.",
+        "founders": "Garrett Camp, Philip Fung, Robin Chan",
+        "website": "www.example123.com",
+        "category": "AI",
+        "logo": "windows-logo.svg"
+    },
+    {
+        "name": "Apple",
+        "founders": "Garrett Camp, Philip Fung, Robin Chan",
+        "website": "www.example123.com",
+        "category": "Education",
+        "logo": "apple-logo.svg"
+    }
+]
