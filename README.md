@@ -1,52 +1,22 @@
-# Astro Starter Kit: Basics
+<div align="center">
+  <img src="src/assets/Aptura_Logo.svg" alt="Aptura Labs Logo" width="300"/>
+</div>
 
-```sh
-pnpm create astro@latest -- --template basics
-```
+<h1 align="center">Aptura Labs Website</h1>
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+Aptura Labs is a pioneering technology studio that builds, scales, and acquires innovative SaaS and AI-powered startups. This repository contains the official corporate website, designed to showcase our vision, values, team, and the companies we partner with.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
+## ✨ Features
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+- **Sleek, Modern Design:** A visually engaging interface with a dark, space-themed aesthetic.
+- **Dynamic Content:** Team and company data are managed through easy-to-update JSON files in the `src/data` directory.
+- **Responsive Layout:** The site is structured to be fully responsive across desktop, tablet, and mobile devices.
+- **Built for Animation:** The HTML structure is set up with clear IDs and classes, ready for advanced animations using GSAP.
 
-## 🚀 Project Structure
+---
+## 🛠️ Tech Stack
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `pnpm install`             | Installs dependencies                            |
-| `pnpm dev`             | Starts local dev server at `localhost:4321`      |
-| `pnpm build`           | Build your production site to `./dist/`          |
-| `pnpm preview`         | Preview your build locally, before deploying     |
-| `pnpm astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `pnpm astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **[Astro](https://astro.build/):** The web framework for building fast, content-focused websites.
+- **[Tailwind CSS](https://tailwindcss.com/):** A utility-first CSS framework for rapid UI development.
+- **[GSAP (GreenSock Animation Platform)](https://greensock.com/gsap/):** Included for powerful, high-performance animations (to be implemented).
