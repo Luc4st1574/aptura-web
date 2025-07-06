@@ -6,38 +6,37 @@ import apturaLogo from '../assets/Aptura_Logo.svg';
 import arrowIcon from '../assets/arrow-up.svg';
 ---
 
-<header id="main-header" class="w-full">
-  <div class="container mx-auto flex justify-between items-center p-4">
+<header id="main-header" class="w-full bg-black py-4">
+  <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4 md:px-10">
 
-    <nav id="header-nav-left" class="flex-1">
-      <ul class="flex items-center space-x-6">
+    <nav id="header-nav-left" class="w-full md:w-auto mb-4 md:mb-0">
+      <ul class="flex justify-center md:justify-start items-center space-x-6 md:space-x-10">
         <li>
-          {/* The dot span and unnecessary spacing class have been removed here */}
-          <a href="/" class="nav-link">
+          <a href="/" class="nav-link text-gray-300 hover:text-white text-base md:text-lg whitespace-nowrap">
             <span>Home</span>
           </a>
         </li>
         <li>
-          <a href="/companies" class="nav-link">Companies</a>
+          <a href="/companies" class="nav-link text-gray-300 hover:text-white text-base md:text-lg whitespace-nowrap">Companies</a>
         </li>
       </ul>
     </nav>
 
-    <div id="logo-container" class="flex-shrink-0">
+    <div id="logo-container" class="flex-shrink-0 mx-0 md:mx-8 mb-4 md:mb-0">
       <a href="/" aria-label="Aptura Labs Home">
-        <Image src={apturaLogo} alt="Aptura Labs Logo" width="140" />
+        <Image src={apturaLogo} alt="Aptura Labs Logo" width="120" class="md:w-[160px]" />
       </a>
     </div>
 
-    <nav id="header-nav-right" class="flex-1">
-      <ul class="flex items-center justify-end space-x-6">
+    <nav id="header-nav-right" class="w-full md:w-auto">
+      <ul class="flex justify-center md:justify-end items-center space-x-6 md:space-x-10">
         <li>
-          <a href="/team" class="nav-link">Team</a>
+          <a href="/team" class="nav-link text-gray-300 hover:text-white text-base md:text-lg whitespace-nowrap">Team</a>
         </li>
         <li>
-          <a href="/contact" class="nav-link flex items-center space-x-1">
+          <a href="/contact" class="nav-link flex items-center space-x-1 md:space-x-2 text-gray-300 hover:text-white text-base md:text-lg whitespace-nowrap">
             <span>Contact</span>
-            <Image src={arrowIcon} alt="Arrow Icon" width="16" height="16" />
+            <Image src={arrowIcon} alt="Arrow Icon" width="16" height="16" class="md:w-[18px] md:h-[18px]" />
           </a>
         </li>
       </ul>
