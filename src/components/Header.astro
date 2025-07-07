@@ -9,21 +9,18 @@ import headerMenuBackground from '../assets/header-menu-background.svg';
 import homeIconMobile from '../assets/home-icon.svg';
 import companiesIconMobile from '../assets/companies-icon.svg';
 import teamIconMobile from '../assets/team-icon.svg';
-import contactIconMobile from '../assets/contact-icon.svg'; // Ensure this path is correct
+import contactIconMobile from '../assets/contact-icon.svg';
 
 // Import the new MobileMenuButton component
-import MobileMenuButton from './MobileMenuButton.astro'; // Adjust path if necessary
-// -----------------------------------------------------
-
-const primaryOrange = 'hsl(17, 100%, 50%)';
+import MobileMenuButton from './MobileMenuButton.astro';
 ---
 
 <header id="main-header" class="w-full bg-transparent py-4 z-40">
-  <div class="container mx-auto flex justify-between items-center px-4 md:px-10">
+  <div class="container mx-auto flex justify-between items-center px-4 pt-10 md:px-10">
 
     <div id="logo-container" class="flex-shrink-0 md:hidden">
       <a href="/" aria-label="Aptura Labs Home">
-        <Image src={apturaLogo} alt="Aptura Labs Logo" width="120" />
+        <Image src={apturaLogo} alt="Aptura Labs Logo" width="140" />
       </a>
     </div>
 
@@ -73,20 +70,19 @@ const primaryOrange = 'hsl(17, 100%, 50%)';
 
 <div id="mobile-menu-overlay" class="fixed inset-0 z-50 bg-black transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col"
       style={`background-image: url(${headerMenuBackground.src}); background-size: cover; background-position: center;`}>
-  <div class="flex justify-between items-center p-4"> <div class="flex-shrink-0">
+  <div class="flex justify-between items-center px-4 py-4 pt-24">
+    <div class="flex-shrink-0">
       <a href="/" aria-label="Aptura Labs Home">
-        <Image src={apturaLogo} alt="Aptura Labs Logo" width="120" />
-      </a>
+        <Image src={apturaLogo} alt="Aptura Labs Logo" width="120" /> </a>
     </div>
-    <button id="close-menu-button" class="text-white focus:outline-none p-2 rounded-full border border-gray-600">
-      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <button id="close-menu-button" class="text-white focus:outline-none rounded-full border border-gray-600 w-12 h-12 flex items-center justify-center">
+      <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
       </svg>
     </button>
   </div>
-
-  <nav class="flex-grow flex flex-col justify-start items-start px-4">
-    <ul class="w-full">
+  <nav class="flex-grow flex flex-col justify-start items-start px-1">
+    <ul class="w-full h-full flex flex-col justify-center -mt-10"> 
       <li class="border-b border-gray-700 py-4 pl-8">
         <a href="/" class="mobile-nav-link text-white text-2xl flex items-center space-x-4">
           <Image src={homeIconMobile} alt="Home Icon" width="28" height="28" class="w-7 h-7" />
@@ -114,67 +110,9 @@ const primaryOrange = 'hsl(17, 100%, 50%)';
     </ul>
   </nav>
 
-  <div class="text-center text-gray-500 text-sm py-4 pb-8">
-    <p>&copy; 2025 Aptura Labs | All Rights Reserved</p>
+  <div class="fixed bottom-[20px] left-0 w-full bg-transparent border-t border-b border-gray-800 z-50">
+    <p class="text-gray-400 text-xs py-2 text-center">&copy; 2025 Aptura Labs | All Rights Reserved</p>
   </div>
 </div>
 
-<script is:inline>
-  // Get the primary orange color from the Astro component's frontmatter
-  const primaryOrange = 'hsl(17, 100%, 50%)';
-
-  // Get all mobile navigation links
-  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-  // Add event listeners to each link
-  mobileNavLinks.forEach(link => {
-    link.addEventListener('click', function() {
-      mobileNavLinks.forEach(otherLink => {
-        if (otherLink !== this) {
-            otherLink.style.color = '';
-        }
-      });
-      this.style.color = primaryOrange;
-    });
-
-    link.addEventListener('mouseenter', function() {
-      this.style.color = primaryOrange;
-    });
-
-    link.addEventListener('mouseleave', function() {
-      if (this.style.color === primaryOrange) {
-         this.style.color = '';
-      }
-    });
-  });
-
-  // Handle the mobile menu open/close logic
-  const mobileMenuButton = document.getElementById('mobile-menu-button');
-  const closeMenuButton = document.getElementById('close-menu-button');
-  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
-
-  if (mobileMenuButton && mobileMenuOverlay) {
-    mobileMenuButton.addEventListener('click', () => {
-      mobileMenuOverlay.classList.remove('translate-x-full');
-    });
-  }
-
-  if (closeMenuButton && mobileMenuOverlay) {
-    closeMenuButton.addEventListener('click', () => {
-      mobileMenuOverlay.classList.add('translate-x-full');
-    });
-  }
-
-  // Close menu when a navigation link is clicked
-  mobileNavLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      if (mobileMenuOverlay) {
-        mobileMenuOverlay.classList.add('translate-x-full');
-      }
-    });
-  });
-</script>
-
-<style>
-  /* You can add custom styles here if Tailwind alone isn't sufficient */
-</style>
+<script src="../scripts/header_script.js"></script>
