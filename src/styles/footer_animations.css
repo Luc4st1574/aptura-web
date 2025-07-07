@@ -1,0 +1,39 @@
+/* src/styles/footer_animations.css */
+
+/* Custom CSS for the scrolling ticker */
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0%);
+    }
+    100% {
+        transform: translateX(-50%); /* Scroll half the content width for seamless loop */
+    }
+}
+
+.ticker-container {
+    display: flex; /* Make children lay out in a row */
+    white-space: nowrap; /* Prevent text from wrapping */
+    animation: scroll-left 20s linear infinite; /* Adjust duration and timing as needed */
+    /* Add hardware acceleration for smoother animation */
+    transform: translateZ(0);
+}
+
+/* To pause the animation on hover (optional, applies to the whole ticker area) */
+#contact-ticker:hover .ticker-container {
+    animation-play-state: paused;
+}
+
+/* Custom styles for the glow effect on the motto text */
+.text-orange-glow {
+    text-shadow: 0 0 12px rgba(255, 165, 0, 0.25);
+}
+
+/* Specific mobile positioning for the black hole cluster above motto text */
+.motto-black-hole-mobile-group {
+    position: absolute;
+    top: -4rem; /* Keep this height as requested */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    /* Width and height for this group are applied directly in HTML (w-24 h-12) */
+}
