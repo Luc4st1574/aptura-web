@@ -1,16 +1,32 @@
 ---
+/// <reference types="astro/client" />
 import { Image } from 'astro:assets';
 
 // Importing the assets
 import apturaLogo from '../assets/Aptura_Logo.svg';
 import arrowIcon from '../assets/arrow-up.svg';
+import headerMenuBackground from '../assets/header-menu-background.svg';
+
+// Import the new MobileMenuButton component
+import MobileMenuButton from './MobileMenuButton.astro'; // Adjust path if necessary
+
+const primaryOrange = 'hsl(17, 100%, 50%)';
 ---
 
-<header id="main-header" class="w-full bg-black py-4">
-  <div class="container mx-auto flex flex-col md:flex-row justify-between items-center px-4 md:px-10">
+<!-- Main Header Section -->
+<header id="main-header" class="w-full bg-transparent py-4 absolute top-0 left-0 z-40">
+  <!--
+    The main container now uses `justify-between` to space out the three main items:
+    left nav, logo, and right nav.
+    On mobile, it will collapse to `flex-col` as before, but the mobile button
+    will be positioned differently.
+  -->
+  <div class="container mx-auto flex justify-between items-center px-4 md:px-10">
 
-    <nav id="header-nav-left" class="w-full md:w-auto mb-4 md:mb-0">
-      <ul class="flex justify-center md:justify-start items-center space-x-6 md:space-x-10">
+    <!-- Desktop Navigation - Left Section -->
+    <!-- Hidden on mobile, displayed as flex on medium screens and up -->
+    <nav id="header-nav-left" class="hidden md:flex w-full md:w-auto">
+      <ul class="flex justify-start items-center space-x-6 md:space-x-10">
         <li>
           <a href="/" class="nav-link text-gray-300 hover:text-white text-base md:text-lg whitespace-nowrap">
             <span>Home</span>
@@ -22,14 +38,21 @@ import arrowIcon from '../assets/arrow-up.svg';
       </ul>
     </nav>
 
-    <div id="logo-container" class="flex-shrink-0 mx-0 md:mx-8 mb-4 md:mb-0">
+    <!-- Logo Container -->
+    <!--
+      On desktop, this will naturally sit in the middle due to `justify-between`
+      and the two navs. On mobile, it's the primary element on the left.
+    -->
+    <div id="logo-container" class="flex-shrink-0 mx-0 md:mx-8">
       <a href="/" aria-label="Aptura Labs Home">
         <Image src={apturaLogo} alt="Aptura Labs Logo" width="120" class="md:w-[160px]" />
       </a>
     </div>
 
-    <nav id="header-nav-right" class="w-full md:w-auto">
-      <ul class="flex justify-center md:justify-end items-center space-x-6 md:space-x-10">
+    <!-- Desktop Navigation - Right Section -->
+    <!-- Hidden on mobile, displayed as flex on medium screens and up -->
+    <nav id="header-nav-right" class="hidden md:flex w-full md:w-auto">
+      <ul class="flex justify-end items-center space-x-6 md:space-x-10">
         <li>
           <a href="/team" class="nav-link text-gray-300 hover:text-white text-base md:text-lg whitespace-nowrap">Team</a>
         </li>
@@ -42,5 +65,74 @@ import arrowIcon from '../assets/arrow-up.svg';
       </ul>
     </nav>
 
+    <!-- Mobile Menu Button (Hamburger Icon) - Only visible on mobile screens -->
+    <!-- Positioned absolutely on mobile for correct alignment with logo -->
+    <MobileMenuButton id="mobile-menu-button" class="md:hidden absolute right-4 top-4 text-white focus:outline-none p-2 rounded-full border border-gray-600" client:load>
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+      </svg>
+    </MobileMenuButton>
+
   </div>
 </header>
+
+<!-- Mobile Menu Overlay (remains unchanged) -->
+<div id="mobile-menu-overlay" class="fixed inset-0 z-50 bg-black transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col justify-between"
+      style={`background-image: url(${headerMenuBackground.src}); background-size: cover; background-position: center;`}>
+  <div class="flex justify-between items-center p-4">
+    <div class="flex-shrink-0">
+      <a href="/" aria-label="Aptura Labs Home">
+        <Image src={apturaLogo} alt="Aptura Labs Logo" width="120" />
+      </a>
+    </div>
+    <button id="close-menu-button" class="text-white focus:outline-none p-2 rounded-full border border-gray-600">
+      <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Navigation Links - Vertical Layout -->
+  <nav class="flex-grow flex flex-col justify-center items-center space-y-6 px-4">
+    <ul class="w-full">
+      <li class="border-b border-gray-700 py-4 text-center">
+        <a href="/" class="nav-link text-white hover:text-[${primaryOrange}] text-2xl flex items-center justify-center space-x-3">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-9v10a1 1 0 001 1h3M12 9v6"></path>
+          </svg>
+          <span>Home</span>
+        </a>
+      </li>
+      <li class="border-b border-gray-700 py-4 text-center">
+        <a href="/companies" class="nav-link text-white hover:text-[${primaryOrange}] text-2xl flex items-center justify-center space-x-3">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m-1 4h1m8-10h1m-1 4h1m-1 4h1m-1 4h1"></path>
+          </svg>
+          <span>Companies</span>
+        </a>
+      </li>
+      <li class="border-b border-gray-700 py-4 text-center">
+        <a href="/team" class="nav-link text-white hover:text-[${primaryOrange}] text-2xl flex items-center justify-center space-x-3">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h2a2 2 0 002-2V7a2 2 0 00-2-2h-2V3a1 1 0 00-1-1H8a1 1 0 00-1 1v2H5a2 2 0 00-2 2v11a2 2 0 002 2h2m10 0v2a2 2 0 01-2 2H7a2 2 0 01-2-2v-2m10 0H7"></path>
+          </svg>
+          <span>Team</span>
+        </a>
+      </li>
+      <li class="py-4 text-center">
+        <a href="/contact" class="nav-link flex items-center justify-center space-x-3 text-white hover:text-[${primaryOrange}] text-2xl">
+          <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"></path>
+          </svg>
+          <span>Contact</span>
+          <Image src={arrowIcon} alt="Arrow Icon" width="18" height="18" />
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- Copyright Information -->
+  <div class="text-center text-gray-500 text-sm py-4">
+    <p>&copy; 2025 Aptura Labs | All Rights Reserved</p>
+  </div>
+</div>

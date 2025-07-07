@@ -1,0 +1,35 @@
+---
+// src/components/MobileMenuButton.astro
+// This component encapsulates the mobile menu button and its client-side hydration.
+interface Props {
+  id: string;
+  class?: string;
+}
+
+const { id, class: className } = Astro.props;
+---
+
+<button id={id} class:list={[className]}><slot /></button>
+
+<script>
+    // Import the function from mobileMenu.js
+    // The path here is relative to this Astro component's location.
+    import { initializeMobileMenu } from '../scripts/mobileMenu.js'; // Adjust path as necessary
+
+    document.addEventListener('DOMContentLoaded', () => {
+    const mobileMenuButton = document.getElementById('mobile-menu-button');
+    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+
+    if (mobileMenuButton && mobileMenuOverlay) {
+        mobileMenuButton.addEventListener('click', () => {
+        mobileMenuOverlay.classList.remove('translate-x-full');
+        document.body.style.overflow = 'hidden';
+    });
+    }
+
+    // Call the shared initialization function here.
+    // This ensures the close button and nav links also get their listeners attached
+    // once this component (and thus the whole header part of the DOM) is ready on the client.
+    initializeMobileMenu();
+});
+</script>
