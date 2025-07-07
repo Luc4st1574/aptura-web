@@ -1,8 +1,9 @@
 ---
-// src/components/Footer.astro (assuming this is your component path)
-import blackHole from '../assets/black_hole.svg';
+// src/components/Footer.astro
+import blackHoleLeft from '../assets/black_hole_left.svg'; // New import for left black hole
+import blackHoleRight from '../assets/black_hole_right.svg'; // New import for right black hole
 import footerText from '../assets/footer-text.png';
-import footerBackground from '../assets/footer-background.png';
+import footerBackground from '../assets/footer-background.png'; // Keeping as .png as requested
 ---
 
 <style>
@@ -31,6 +32,16 @@ import footerBackground from '../assets/footer-background.png';
     .text-orange-glow {
         text-shadow: 0 0 12px rgba(255, 165, 0, 0.25);
     }
+
+    /* Specific mobile positioning for the black hole cluster above motto text */
+    .motto-black-hole-mobile-group {
+        position: absolute;
+        top: -4rem; /* Keep this height as requested */
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: 10;
+        /* Width and height for this group are applied directly in HTML (w-24 h-12) */
+    }
 </style>
 
 <footer
@@ -56,35 +67,39 @@ import footerBackground from '../assets/footer-background.png';
             <span class="text-3xl sm:text-4xl md:text-5xl uppercase tracking-widest text-white opacity-15 px-8">&bull;</span>
             <span class="text-3xl sm:text-4xl md:text-5xl uppercase tracking-widest text-white px-8">CONTACT US</span>
             <span class="text-3xl sm:text-4xl md:text-5xl uppercase tracking-widest text-white opacity-15 px-8">&bull;</span>
-            <span class="text-3xl sm:text-4xl md:text-5xl uppercase tracking-widest text-white px-8">CONTACT US</span>
-            <span class="text-3xl sm:text-4xl md:text-5xl uppercase tracking-widest text-white opacity-15 px-8">&bull;</span>
         </div>
     </section>
 
     <div class="container mx-auto px-4">
-        <nav id="footer-nav" class="py-2">
-            <ul class="flex justify-center items-center space-x-2 sm:space-x-4">
-                <li><a href="/team" class="text-sm text-gray-400 hover:text-white tracking-wider font-light">Our Team</a></li>
+        <nav id="footer-nav" class="py-2 relative">
+            <div class="block md:hidden absolute w-full h-full inset-0 flex justify-center items-center gap-x-[180px] sm:gap-x-[230px]" style="top: -20px;">
+                <img src={blackHoleRight.src} alt="Black Hole Left" class="w-16 h-16 sm:w-20 sm:h-20" />
+                <img src={blackHoleLeft.src} alt="Black Hole Right" class="w-16 h-16 sm:w-20 sm:h-20" />
+            </div>
+
+            <ul class="flex justify-center items-center space-x-2 sm:space-x-4 text-xs sm:text-sm relative z-10">
+                <li><a href="/team" class="text-gray-400 hover:text-white tracking-wider font-light">Our Team</a></li>
                 <li><span class="text-gray-600">|</span></li>
-                <li><a href="/contact" class="text-sm text-gray-400 hover:text-white tracking-wider font-light">Contact Us</a></li>
+                <li><a href="/contact" class="text-gray-400 hover:text-white tracking-wider font-light">Contact Us</a></li>
                 <li><span class="text-gray-600">|</span></li>
-                <li><a href="/companies" class="text-sm text-gray-400 hover:text-white tracking-wider font-light">Companies</a></li>
+                <li><a href="/companies" class="text-gray-400 hover:text-white tracking-wider font-light">Companies</a></li>
             </ul>
         </nav>
 
-        <div class="flex flex-col md:flex-row justify-center items-center py-2 text-center md:text-left">
-            <div class="relative w-24 h-24 sm:w-28 sm:h-28 -translate-y-8 md:-translate-y-11 mb-4 md:mb-0">
-                <img src={blackHole.src} alt="Black Hole" class="absolute w-16 h-16 sm:w-20 sm:h-20 top-2 right-0" />
-                <img src={blackHole.src} alt="Black Hole" class="absolute w-10 h-10 sm:w-14 sm:h-14 top-10 sm:top-14 right-8 sm:right-11" />
+        <div class="flex flex-col md:flex-row justify-center items-center py-2 text-center md:text-left relative">
+
+            <div class="hidden md:block relative w-28 h-28 -translate-y-8">
+                <img src={blackHoleRight.src} alt="Black Hole" class="absolute w-24 h-24 top-2 right-0" />
             </div>
+
             <p
-                class="text-xl sm:text-2xl md:text-3xl uppercase text-gray-300 tracking-[0.15em] sm:tracking-[0.2em] px-4 md:px-0 mx-auto md:-mx-8 text-orange-glow"
+                class="text-xs sm:text-sm md:text-3xl uppercase text-gray-300 tracking-[0.05em] sm:tracking-[0.1em] md:tracking-[0.2em] px-4 md:px-0 mx-auto md:-mx-8 text-orange-glow leading-tight whitespace-nowrap"
             >
                 WE TURN BOLD IDEAS INTO MARKET LEADING COMPANIES
             </p>
-            <div class="relative w-24 h-24 sm:w-28 sm:h-28 -translate-y-8 md:-translate-y-11 mt-4 md:mt-0">
-                <img src={blackHole.src} alt="Black Hole" class="absolute w-16 h-16 sm:w-20 sm:h-20 top-2 left-0" />
-                <img src={blackHole.src} alt="Black Hole" class="absolute w-10 h-10 sm:w-14 sm:h-14 top-10 sm:top-14 left-8 sm:left-11" />
+
+            <div class="hidden md:block relative w-28 h-28 -translate-y-8">
+                <img src={blackHoleLeft.src} alt="Black Hole Left" class="absolute w-24 h-24 top-2 left-0" />
             </div>
         </div>
 
@@ -92,11 +107,14 @@ import footerBackground from '../assets/footer-background.png';
             <div class="w-11/12 border-t border-white mt-8 mb-8"></div>
         </div>
 
-        <div class="flex flex-col sm:flex-row justify-between items-center text-sm text-white py-2 px-4 sm:px-16 text-center">
-            <div class="mb-2 sm:mb-0">
+        <div class="flex justify-center items-center text-sm text-white py-2 px-4 sm:px-16 text-center space-x-2 sm:space-x-4">
+            <div>
                 <p>Aptura Labs &copy; 2025</p>
             </div>
-            <div class="flex items-center space-x-2">
+            <div>
+                <span class="text-white">|</span>
+            </div>
+            <div>
                 <p>ALL RIGHTS RESERVED</p>
             </div>
         </div>
