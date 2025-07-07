@@ -1,28 +1,28 @@
 // src/scripts/mobileMenu.js
 // This script handles the mobile menu close functionality and link clicks.
 
-// Wrap the logic in a function that can be explicitly called.
+// The logic is now directly exposed by the function,
+// to be called from a client-side context (e.g., MobileMenuButton.astro's script).
 export function initializeMobileMenu() {
-  document.addEventListener('DOMContentLoaded', () => {
-    // Get references to the DOM elements by their IDs
-    const closeMenuButton = document.getElementById('close-menu-button');
-    const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
+  const closeMenuButton = document.getElementById('close-menu-button');
+  const mobileMenuOverlay = document.getElementById('mobile-menu-overlay');
 
-    if (closeMenuButton && mobileMenuOverlay) {
-      closeMenuButton.addEventListener('click', () => {
-        mobileMenuOverlay.classList.add('translate-x-full');
-        document.body.style.overflow = '';
-      });
-    }
+  // Event listener for closing the mobile menu when the 'X' button is clicked
+  if (closeMenuButton && mobileMenuOverlay) {
+    closeMenuButton.addEventListener('click', () => {
+      mobileMenuOverlay.classList.add('translate-x-full'); // Slide out the menu
+      document.body.style.overflow = ''; // Restore scrolling on the main page
+    });
+  }
 
-    if (mobileMenuOverlay) {
-      const mobileNavLinks = mobileMenuOverlay.querySelectorAll('.nav-link');
-      mobileNavLinks.forEach(link => {
-        link.addEventListener('click', () => {
-          mobileMenuOverlay.classList.add('translate-x-full');
-          document.body.style.overflow = '';
-        });
+  // Event listener to close the menu when any navigation link inside the mobile menu is clicked
+  if (mobileMenuOverlay) {
+    const mobileNavLinks = mobileMenuOverlay.querySelectorAll('.nav-link');
+    mobileNavLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuOverlay.classList.add('translate-x-full'); // Slide out the menu
+        document.body.style.overflow = ''; // Restore scrolling
       });
-    }
-  });
+    });
+  }
 }
