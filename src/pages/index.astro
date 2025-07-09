@@ -1,14 +1,16 @@
 ---
 import MainLayout from '../layouts/MainLayout.astro';
 import { Image } from 'astro:assets';
-import innovationIcon from '../assets/Innovation_Icon.svg';
-import integrityIcon from '../assets/Integrity_Icon.svg';
-import impactIcon from '../assets/Impact_Icon.svg';
-import collaborationIcon from '../assets/Collaboration_Icon.svg';
+import innovationIcon from '../assets/innovation-icons.svg';
+import integrityIcon from '../assets/Integrity_Icons.svg';
+import impactIcon from '../assets/Impact_Icons.svg';
+import collaborationIcon from '../assets/Collaboration_Icons.svg';
 import mainBackground from '../assets/main-background.svg';
 import contactIcon from '../assets/contact-icon.svg';
 import planetBackground from '../assets/planet-background.svg';
 import valuesBackground from '../assets/values-background.svg';
+import blackHoleLeft from '../assets/black_hole_left.svg';
+import blackHoleRight from '../assets/black_hole_right.svg';
 const overlapAmount = '17rem';
 // -------------------------
 
@@ -23,6 +25,19 @@ const overlapAmount = '17rem';
             <div class="relative z-[1] text-center">
                 <h1 class="font-bold text-white leading-none text-8xl lg:text-[22rem]">APTURA</h1>
             </div>
+        </div>
+
+        <div class="absolute top-[28rem] left-0 w-full h-auto z-10">
+            <Image
+                src={blackHoleRight}
+                alt="Black hole on the left"
+                class="absolute left-10 md:left-48 w-48 h-48"
+            />
+            <Image
+                src={blackHoleLeft}
+                alt="Black hole on the right"
+                class="absolute right-10 md:right-48 w-48 h-48"
+            />
         </div>
         
         <div 
@@ -96,6 +111,7 @@ const overlapAmount = '17rem';
         `}
     >
         <div class="container mx-auto">
+
             <h2 class="text-5xl text-center mb-16">"Our Values</h2>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-16 max-w-5xl mx-auto">
                 <div class="value-card">
