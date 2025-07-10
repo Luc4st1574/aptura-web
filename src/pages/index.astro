@@ -12,19 +12,23 @@ import valuesBackground from '../assets/values-background.svg';
 import blackHoleLeft from '../assets/black_hole_left.svg';
 import blackHoleRight from '../assets/black_hole_right.svg';
 import visionBackground from '../assets/vision-background.svg';
-const overlapAmount = '17rem';
+// MODIFICATION: Removed the 'overlapAmount' constant as we will use responsive Tailwind classes instead.
 ---
 <MainLayout pageBackground={mainBackground.src}>
-    <section 
-        id="hero" 
-        slot="hero" 
-        class="relative w-full text-center overflow-hidden" 
+    <section
+        id="hero"
+        slot="hero"
+        class="relative w-full text-center overflow-hidden"
     >
-        <div class="container mx-auto pt-24">
+        {/* --- START: MODIFIED SECTION --- */}
+        {/* MODIFICATION: Reduced top padding on smaller screens (pt-16) to move the "APTURA" text up. The padding increases on larger screens (md:pt-24). */}
+        <div class="container mx-auto pt-16 md:pt-24">
             <div class="relative z-[1] text-center">
-                <h1 class="font-bold text-white leading-none text-8xl lg:text-[22rem]">APTURA</h1>
+                {/* MODIFICATION: Adjusted font sizes to be smaller on mobile (text-7xl) and scale up more smoothly across breakpoints. */}
+                <h1 class="font-bold text-white leading-none text-7xl sm:text-8xl md:text-[10rem] lg:text-[15rem] xl:text-[22rem]">APTURA</h1>
             </div>
         </div>
+        {/* --- END: MODIFIED SECTION --- */}
 
         <div class="absolute top-[28rem] left-0 w-full h-auto z-10">
             <Image
@@ -38,19 +42,22 @@ const overlapAmount = '17rem';
                 class="absolute right-10 md:right-48 w-48 h-48"
             />
         </div>
-        
-        <div 
-            class="relative w-full"
-            style={`margin-top: -${overlapAmount};`}
+
+        {/* --- START: MODIFIED SECTION --- */}
+        {/* MODIFICATION: Adjusted the responsive negative margins to match the new font sizes and padding, ensuring the overlap looks correct on all screens. */}
+        <div
+            class="relative w-full -mt-20 sm:-mt-24 md:-mt-32 lg:-mt-48 xl:-mt-[17rem]"
         >
-            <Image 
-                src={planetBackground} 
-                alt="Planet background" 
+        {/* --- END: MODIFIED SECTION --- */}
+            <Image
+                src={planetBackground}
+                alt="Planet background"
                 class="w-full h-auto"
             />
 
             {/* --- START: MODIFIED SECTION --- */}
-            <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4 overflow-y-auto">
+            {/* MODIFICATION: Removed 'overflow-y-auto' to prevent the unwanted inner scrollbar from appearing within the hero section. */}
+            <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
 
                 {/* Wrapper to control max-width and spacing of all content on the planet */}
                 <div class="w-full max-w-4xl space-y-8 mt-80">
@@ -69,17 +76,17 @@ const overlapAmount = '17rem';
                         </div>
                     </div>
 
-                    <div 
-                        id="notification-banner" 
+                    <div
+                        id="notification-banner"
                         class="max-w-sm md:max-w-7xl mx-auto rounded-2xl bg-[rgb(25,25,25)] p-4 md:px-6 md:py-4 flex items-center gap-8 md:gap-4 mt-28"
                     >
                         <p class="text-[rgb(212,212,212)] text-xs md:text-sm md:flex-grow whitespace-nowrap">
                             Aptura Labs is a <strong class="font-bold text-white">Pioneering Technology Studio</strong><br class="md:hidden"> that builds, scales, and acquires innovative SaaS<br class="md:hidden"> and AI-powered startups.
                         </p>
-                        <button 
-                            id="close-banner-button" 
-                            type="button" 
-                            aria-label="Close banner" 
+                        <button
+                            id="close-banner-button"
+                            type="button"
+                            aria-label="Close banner"
                             class="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-white/10 border border-white/20 text-[rgb(212,212,212)] leading-none transition-colors hover:bg-white/20"
                         >
                             &times;
@@ -158,68 +165,41 @@ const overlapAmount = '17rem';
 
     <section
         id="vision"
-        class="w-full min-h-screen flex flex-col"
+        class="w-full min-h-screen relative"
         style={`
             background-image: url(${visionBackground.src});
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
         `}
-        >
-        <div class="container mx-auto px-4 flex flex-col flex-grow justify-around py-10">
-            <div class="flex-grow flex justify-center items-center">
-                <h2 class="text-6xl font-light inline-flex items-baseline text-center">
+    >
+        <div class="container mx-auto px-4 h-full">
+
+            <div class="absolute top-[5%] left-1/2 -translate-x-1/2 text-center">
+                <h2 class="text-6xl font-light inline-flex items-baseline">
                     <span class="text-9xl text-gray-500 mr-2">"</span>
                     <span>Our Vision</span>
                 </h2>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-4 mt-28">
-                {/* --- Top Row --- */}
-                <div class="md:col-span-2 pr-4 self-center">
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        <strong>Aptura Labs Aspires To Cultivate A Robust,</strong> interconnected network of
-                        technology-driven ventures that sustainably shape industries, economies, and communities
-                        around the world.
-                    </p>
-                </div>
-                <div class="vision-square self-end -ml-2"></div>
-                {/* Custom 'no-right-border' class applied */}
-                <div class="vision-square -ml-[10px] self-end no-right-border"></div>
-
-                {/* --- Bottom Row --- */}
-                {/* Custom 'no-left-border' class applied */}
-                <div class="vision-square -mt-[10px] ml-2 no-left-border"></div>
-                <div class="vision-square -mt-[10px] -ml-[10px]"></div>
-                <div class="md:col-span-2 -mt-[10px] text-right pl-4 self-center">
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        <strong>We Envision A Future</strong> where our innovative solutions and strategic
-                        acquisitions collectively redefine what's possible, consistently pushing the boundaries
-                        of technology, scalability, and social impact.
-                    </p>
-                </div>
+            <div class="absolute top-[40%] -translate-y-1/2 left-10 md:left-20 max-w-2xl">
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    <strong>Aptura Labs Aspires To Cultivate A Robust,</strong> interconnected network of
+                    technology-driven ventures that sustainably shape industries, economies, and communities
+                    around the world.
+                </p>
             </div>
+
+            <div class="absolute bottom-[15%] right-10 md:right-20 max-w-2xl text-right">
+                <p class="text-lg text-gray-300 leading-relaxed">
+                    <strong>We Envision A Future</strong> where our innovative solutions and strategic
+                    acquisitions collectively redefine what's possible, consistently pushing the boundaries
+                    of technology, scalability, and social impact.
+                </p>
+            </div>
+
         </div>
     </section>
-
-    <style>
-    .vision-square {
-        aspect-ratio: 1 / 1;
-        background-color: rgba(0, 0, 0, 0.4);
-        border: 10px solid rgb(0, 0, 0);
-        padding: 2rem;
-        position: relative;
-        z-index: 10;
-    }
-
-    /* New classes to reliably remove specific borders */
-    .vision-square.no-right-border {
-        border-right-width: 0px;
-    }
-    .vision-square.no-left-border {
-        border-left-width: 0px;
-    }
-    </style>
 </MainLayout>
 
 <script>

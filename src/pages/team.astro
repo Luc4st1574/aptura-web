@@ -3,56 +3,89 @@ import MainLayout from '../layouts/MainLayout.astro';
 import { Image } from 'astro:assets';
 import teamData from '../data/team.json';
 import devIcon from '../assets/dev_icon.svg';
+import leadershipBackground from '../assets/leadership-background.svg';
+import teamBackground from '../assets/team-background.svg';
 
 // Filter the data into two separate groups
 const leadership = teamData.filter(member => member.category === 'leadership');
 const team = teamData.filter(member => member.category === 'team');
 ---
 <MainLayout>
-    <div class="container mx-auto py-20 px-4">
-
-        <!-- Top Banner -->
-        <section id="team-banner" class="text-center mb-20">
+    <section id="team-banner" class="w-full text-center mt-8" style="background-color: rgb(13, 13, 13);">
+        <div class="container mx-auto py-4">
             <p>PASSIONATE ABOUT GREAT CHALLENGES, WE TURN IDEAS INTO PROGRESS AND EFFORT INTO RESULTS.</p>
-        </section>
+        </div>
+    </section>
 
-        <!-- Leadership & Investors Section -->
-        <section id="leadership" class="mb-24">
-            <div class="max-w-3xl mb-12">
+    {/* Leadership Section - Title background with margins */}
+    <section 
+        id="leadership-intro" 
+        class="flex items-center mt-4 mx-4"
+        style={`
+            background-image: url(${leadershipBackground.src}); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            min-height: 450px; /* Ensures the image is visible */
+        `}
+    >
+        <div class="container mx-auto px-4">
+            <div class="max-w-3xl">
                 <h2 class="text-5xl mb-4">"Leadership & Investors</h2>
                 <p class="text-gray-300">Our leadership combines experience and strategic vision to guide every key decision. Together with committed investors, we drive the growth, innovation and sustainable development of our projects.</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
-                {leadership.map(member => (
-                    <div class="team-member-card text-center">
-                        <div class="image-container bg-gray-800 rounded-lg p-4 mb-4">
-                            <Image src={devIcon} alt={`Icon for ${member.name}`} class="w-full h-auto" />
-                        </div>
-                        <h3 class="font-bold">{member.name}</h3>
-                        <p class="text-sm text-gray-400">{member.title}</p>
-                    </div>
-                ))}
-            </div>
-        </section>
+        </div>
+    </section>
 
-        <!-- Our Team Section -->
-        <section id="our-team">
-            <div class="max-w-3xl mb-12">
+    {/* Leadership Section - Grid remains contained */}
+    <div class="container mx-auto py-16 px-4">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+            {leadership.map(member => (
+                <div class="team-member-card text-center">
+                    {/* Added border and border-black to the clipping container to hide rendering artifacts. */}
+                    <div class="rounded-lg overflow-hidden mb-4 bg-black border border-black">
+                        <Image src={devIcon} alt={`Icon for ${member.name}`} class="w-full h-auto" />
+                    </div>
+                    <h3 class="font-bold">{member.name}</h3>
+                    <p class="text-sm text-gray-400">{member.title}</p>
+                </div>
+            ))}
+        </div>
+    </div>
+
+    {/* Our Team Section - Title background with margins */}
+    <section 
+        id="our-team-intro" 
+        class="flex items-center mt-4 mx-4"
+        style={`
+            background-image: url(${teamBackground.src}); 
+            background-size: cover; 
+            background-position: center; 
+            background-repeat: no-repeat;
+            min-height: 450px; /* Ensures the image is visible */
+        `}
+    >
+        <div class="container mx-auto px-4">
+            <div class="max-w-2xl">
                 <h2 class="text-5xl mb-4">"Our <span class="text-orange-500">Team</span></h2>
                 <p class="text-gray-300">We Have Some Of The Best Performers In The Industry. People Who Are Passionate About Solving Complex Challenges And Committed To The Growth Of Your Company.</p>
             </div>
-            <div class="grid grid-cols-2 md:grid-cols-5 gap-8">
-                {team.map(member => (
-                    <div class="team-member-card text-center">
-                        <div class="image-container bg-gray-800 rounded-lg p-4 mb-4">
-                            <Image src={devIcon} alt={`Icon for ${member.name}`} class="w-full h-auto" />
-                        </div>
-                        <h3 class="font-bold">{member.name}</h3>
-                        <p class="text-sm text-gray-400">{member.title}</p>
-                    </div>
-                ))}
-            </div>
-        </section>
+        </div>
+    </section>
 
+    {/* Our Team Section - Now uses Flexbox for centered pyramid layout */}
+    <div class="container mx-auto py-16 px-4">
+        <div class="flex flex-wrap justify-center gap-8">
+            {team.map(member => (
+                <div class="team-member-card text-center basis-full sm:basis-[40%] md:basis-[18%]">
+                    {/* Added border and border-black to the clipping container to hide rendering artifacts. */}
+                    <div class="rounded-lg overflow-hidden mb-4 bg-black border border-black">
+                        <Image src={devIcon} alt={`Icon for ${member.name}`} class="w-full h-auto" />
+                    </div>
+                    <h3 class="font-bold">{member.name}</h3>
+                    <p class="text-sm text-gray-400">{member.title}</p>
+                </div>
+            ))}
+        </div>
     </div>
 </MainLayout>
