@@ -6,7 +6,6 @@ import devIcon from '../assets/dev_icon.svg';
 import leadershipBackground from '../assets/leadership-background.svg';
 import teamBackground from '../assets/team-background.svg';
 
-// Filter the data into two separate groups
 const leadership = teamData.filter(member => member.category === 'leadership');
 const team = teamData.filter(member => member.category === 'team');
 ---
@@ -17,7 +16,6 @@ const team = teamData.filter(member => member.category === 'team');
         </div>
     </section>
 
-    {/* Leadership Section - Title background with margins */}
     <section 
         id="leadership-intro" 
         class="flex items-center mt-4 mx-4"
@@ -37,12 +35,10 @@ const team = teamData.filter(member => member.category === 'team');
         </div>
     </section>
 
-    {/* Leadership Section - Grid remains contained */}
     <div class="container mx-auto py-16 px-4">
         <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
             {leadership.map(member => (
                 <div class="team-member-card text-center">
-                    {/* Added border and border-black to the clipping container to hide rendering artifacts. */}
                     <div class="rounded-lg overflow-hidden mb-4 bg-black border border-black">
                         <Image src={devIcon} alt={`Icon for ${member.name}`} class="w-full h-auto" />
                     </div>
@@ -53,7 +49,6 @@ const team = teamData.filter(member => member.category === 'team');
         </div>
     </div>
 
-    {/* Our Team Section - Title background with margins */}
     <section 
         id="our-team-intro" 
         class="flex items-center mt-4 mx-4"
@@ -73,12 +68,10 @@ const team = teamData.filter(member => member.category === 'team');
         </div>
     </section>
 
-    {/* Our Team Section - Now uses Flexbox for centered pyramid layout */}
     <div class="container mx-auto py-16 px-4">
         <div class="flex flex-wrap justify-center gap-8">
             {team.map(member => (
                 <div class="team-member-card text-center basis-full sm:basis-[40%] md:basis-[18%]">
-                    {/* Added border and border-black to the clipping container to hide rendering artifacts. */}
                     <div class="rounded-lg overflow-hidden mb-4 bg-black border border-black">
                         <Image src={devIcon} alt={`Icon for ${member.name}`} class="w-full h-auto" />
                     </div>

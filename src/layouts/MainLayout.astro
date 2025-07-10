@@ -18,20 +18,16 @@ const { pageBackground } = Astro.props;
 </head>
 <body class="bg-black text-white font-sans">
 
-    {/* This div now wraps ONLY the Header and the 'hero' slot */}
     <div 
         class="w-full" 
         style={pageBackground ? `background-image: url(${pageBackground}); background-size: cover; background-position: center;` : ''}
     >
         <Header />
         
-        {/* A named slot specifically for the hero section */}
         <slot name="hero" />
     </div>
 
-    {/* The main content renders outside the background div */}
     <main id="page-content">
-        {/* This default slot holds the rest of the page content */}
         <slot />
     </main>
 

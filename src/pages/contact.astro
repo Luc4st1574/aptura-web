@@ -3,14 +3,12 @@ import MainLayout from '../layouts/MainLayout.astro';
 import contactBackground from '../assets/contact-background.svg';
 ---
 <MainLayout>
-    {/* Banner is now outside the main container to be full-width */}
     <section id="contact-banner" class="w-full text-center mt-8" style="background-color: rgb(13, 13, 13);">
         <div class="container mx-auto py-4">
             <p>WE ARE INSPIRED BY COLLABORATING WITH PEOPLE LIKE YOU.</p>
         </div>
     </section>
 
-    {/* This section now has a gradient overlay to soften the bottom edge */}
     <section 
         id="contact-content-wrapper" 
         class="w-full" 
@@ -22,17 +20,14 @@ import contactBackground from '../assets/contact-background.svg';
             min-height: 450px; /* Ensures the image has enough space to display */
         `}
     >
-        {/* The rest of the page content is wrapped in a container */}
         <div class="container mx-auto py-20 px-4">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
 
-                {/* This column is now a flex container to push the address to the bottom */}
                 <div class="left-column flex flex-col justify-between h-full">
                     <h1 class="text-6xl font-medium mb-12">
                         Let's Get<br/>
                         --- <span class="text-orange-500">In Touch</span>
                     </h1>
-                    {/* The large top margin has been removed */}
                     <div class="address-info space-y-2 text-lg pb-17">
                         <p>401 Park Avenue South, 10th Floor</p>
                         <p>New York, NY 10016</p>

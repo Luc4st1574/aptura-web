@@ -12,7 +12,6 @@ import valuesBackground from '../assets/values-background.svg';
 import blackHoleLeft from '../assets/black_hole_left.svg';
 import blackHoleRight from '../assets/black_hole_right.svg';
 import visionBackground from '../assets/vision-background.svg';
-// MODIFICATION: Removed the 'overlapAmount' constant as we will use responsive Tailwind classes instead.
 ---
 <MainLayout pageBackground={mainBackground.src}>
     <section
@@ -20,15 +19,11 @@ import visionBackground from '../assets/vision-background.svg';
         slot="hero"
         class="relative w-full text-center overflow-hidden"
     >
-        {/* --- START: MODIFIED SECTION --- */}
-        {/* MODIFICATION: Reduced top padding on smaller screens (pt-16) to move the "APTURA" text up. The padding increases on larger screens (md:pt-24). */}
         <div class="container mx-auto pt-16 md:pt-24">
             <div class="relative z-[1] text-center">
-                {/* MODIFICATION: Adjusted font sizes to be smaller on mobile (text-7xl) and scale up more smoothly across breakpoints. */}
                 <h1 class="font-bold text-white leading-none text-7xl sm:text-8xl md:text-[10rem] lg:text-[15rem] xl:text-[22rem]">APTURA</h1>
             </div>
         </div>
-        {/* --- END: MODIFIED SECTION --- */}
 
         <div class="absolute top-[28rem] left-0 w-full h-auto z-10">
             <Image
@@ -43,31 +38,24 @@ import visionBackground from '../assets/vision-background.svg';
             />
         </div>
 
-        {/* --- START: MODIFIED SECTION --- */}
-        {/* MODIFICATION: Adjusted the responsive negative margins to match the new font sizes and padding, ensuring the overlap looks correct on all screens. */}
         <div
             class="relative w-full -mt-20 sm:-mt-24 md:-mt-32 lg:-mt-48 xl:-mt-[17rem]"
         >
-        {/* --- END: MODIFIED SECTION --- */}
             <Image
                 src={planetBackground}
                 alt="Planet background"
                 class="w-full h-auto"
             />
 
-            {/* --- START: MODIFIED SECTION --- */}
-            {/* MODIFICATION: Removed 'overflow-y-auto' to prevent the unwanted inner scrollbar from appearing within the hero section. */}
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
 
-                {/* Wrapper to control max-width and spacing of all content on the planet */}
                 <div class="w-full max-w-4xl space-y-8 mt-80">
 
-                    {/* --- Original Hero Text --- */}
                     <div>
                         <h2 class="text-5xl font-medium text-white md:text-8xl">We Promote<br>Brave Startups</h2>
-                        <p class="mt-4 text-base text-[rgb(178,178,178)] md:text-lg">
-                            Creating, Scaling, and Acquiring <span class="font-bold text-white">Next-Generation</span><br class="md:hidden"> Tech Ventures
-                        </p>
+                            <p class="mt-4 text-base text-[rgb(178,178,178)] md:text-lg">
+                                Creating, Scaling, and Acquiring <span class="font-bold text-white">Next-Generation</span><br class="md:hidden"> Tech Ventures
+                            </p>
                         <div class="mt-4">
                             <a href="/contact" class="inline-flex items-center gap-2 rounded-full border border-white px-6 py-3 text-base text-white transition hover:bg-white hover:text-black">
                                 <span>Contact Us</span>
@@ -93,7 +81,6 @@ import visionBackground from '../assets/vision-background.svg';
                         </button>
                     </div>
 
-                    {/* --- MOVED: Intro Text --- */}
                     <section id="intro-text" class="text-lg space-y-7 text-left">
                         <p>Aptura Labs is a pioneering technology studio that builds, scales, and acquires innovative SaaS and AI-powered startups. Combining bold ideation, strategic acquisitions, and meticulous execution, we transform visionary concepts into market-leading ventures designed for lasting impact.</p>
                         <p>Operating across North and South America, Aptura Labs merges deep market insights, cutting-edge technology, and entrepreneurial ability to reshape industries and redefine success. Whether incubating fresh ideas or acquiring promising companies, our focus remains consistent: drive growth, foster innovation, and scale intelligently.</p>
@@ -102,7 +89,6 @@ import visionBackground from '../assets/vision-background.svg';
 
                 </div>
             </div>
-             {/* --- END: MODIFIED SECTION --- */}
         </div>
     </section>
 
@@ -118,7 +104,6 @@ import visionBackground from '../assets/vision-background.svg';
     >
         <div class="container mx-auto px-4">
 
-            {/* --- Heading Container --- */}
             <div class="text-center mb-24">
                 <h2 class="text-6xl font-light inline-flex items-baseline">
                     <span class="text-9xl text-gray-500">"</span>
@@ -126,39 +111,31 @@ import visionBackground from '../assets/vision-background.svg';
                 </h2>
             </div>
 
-
-            {/* --- Values Grid --- */}
             <div class="grid grid-cols-1 md:grid-cols-2 gap-y-20 gap-x-24 max-w-5xl mx-auto">
                 
-                {/* --- Innovation Card --- */}
-                {/* The class is now 'items-start' to left-align the icon and text */}
                 <div class="value-card flex flex-col items-start">
                     <Image src={innovationIcon} width="64" height="64" alt="Innovation Icon" class="mb-6" />
                     <h3 class="text-4xl mb-3 font-light w-full">Innovation</h3>
                     <p class="text-gray-400 leading-relaxed">We continuously pursue bold, original ideas and encourage creativity at every level of our organization. <span class="text-white font-medium">Innovation at Aptura Labs</span> means staying ahead of market trends, exploring uncharted territory, and relentlessly seeking <span class="text-white font-medium">new solutions.</span></p>
                 </div>
 
-                {/* --- Integrity Card --- */}
                 <div class="value-card flex flex-col items-start">
                     <Image src={integrityIcon} width="64" height="64" alt="Integrity Icon" class="mb-6" />
                     <h3 class="text-4xl mb-3 font-light w-full">Integrity</h3>
                     <p class="text-gray-400 leading-relaxed">Our foundation is built on transparency, ethical behavior, and accountability. <span class="text-white font-medium">Integrity Guides Every Decision</span> we make and every partnership we cultivate, ensuring trust with our employees, clients, and stakeholders.</p>
                 </div>
 
-                {/* --- Impact Card --- */}
                 <div class="value-card flex flex-col items-start">
                     <Image src={impactIcon} width="64" height="64" alt="Impact Icon" class="mb-6" />
                     <h3 class="text-4xl mb-3 font-light w-full">Impact</h3>
                     <p class="text-gray-400 leading-relaxed">Creating <span class="text-white font-medium">Meaningful, Measurable Outcomes Is Central</span> to our purpose. Every venture and acquisition at Aptura Labs is selected and developed with the clear intention of generating positive and lasting impacts for society, industries, and economies.</p>
                 </div>
 
-                {/* --- Collaboration Card --- */}
                 <div class="value-card flex flex-col items-start">
                     <Image src={collaborationIcon} width="64" height="64" alt="Collaboration Icon" class="mb-6" />
                     <h3 class="text-4xl mb-3 font-light w-full">Collaboration</h3>
                     <p class="text-gray-400 leading-relaxed">We <span class="text-white font-medium">Value Diverse Perspectives</span> and Understand That <span class="text-white font-medium">Collective Intelligence Leads To Superior Outcomes.</span> Collaboration at Aptura Labs involves fostering an inclusive environment where ideas flourish, teams excel, and strategic alliances thrive.</p>
                 </div>
-                
             </div>
         </div>
     </section>

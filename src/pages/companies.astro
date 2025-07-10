@@ -2,9 +2,7 @@
 import MainLayout from '../layouts/MainLayout.astro';
 import { Image } from 'astro:assets';
 import companiesData from '../data/companies.json';
-// Import the new search icon
 import searchIcon from '../assets/search_icon.svg';
-// Import the background image for the header
 import leadershipBackground from '../assets/leadership-background.svg';
 
 const companyLogos = import.meta.glob('../assets/*-logo.svg', { eager: true });
@@ -21,14 +19,12 @@ function getLogo(logoFilename: string) {
 }
 ---
 <MainLayout>
-    {/* Top Banner - Styled like the team page */}
     <section id="companies-banner" class="w-full text-center mt-8" style="background-color: rgb(13, 13, 13);">
         <div class="container mx-auto py-4">
             <p>WE DESIGN EXPERIENCES WITH VISIONARY LEADERS, COMBINING INNOVATION AND PRECISION.</p>
         </div>
     </section>
 
-    {/* Page Header - Styled like the team page with the same background */}
     <section 
         id="companies-header" 
         class="flex items-center mt-4 mx-4"
@@ -48,11 +44,8 @@ function getLogo(logoFilename: string) {
         </div>
     </section>
 
-    {/* Main content area for filters and grid */}
     <div class="container mx-auto py-20 px-4">
-        {/* Search and Filters */}
         <section id="filters" class="flex flex-col md:flex-row justify-between items-center mb-12 gap-6">
-            {/* Updated Search Bar with Icon */}
             <div class="search-bar relative w-full md:w-auto md:flex-1">
                 <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
                     <Image src={searchIcon} alt="Search Icon" width="24" height="24" />
@@ -67,12 +60,10 @@ function getLogo(logoFilename: string) {
             </div>
         </section>
 
-        {/* Companies Grid */}
         <section id="companies-grid">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {companiesData.map(company => (
                     <div class="company-card flex flex-col justify-between rounded-2xl p-6" style="background-color: rgb(25, 25, 25); min-height: 220px;">
-                        {/* Top section of the card */}
                         <div>
                             <div class="flex justify-between items-start mb-4">
                                 <div class="flex items-start">
@@ -90,7 +81,6 @@ function getLogo(logoFilename: string) {
                             </div>
                         </div>
 
-                        {/* Bottom section of the card */}
                         <div class="website-info rounded-xl p-3 flex items-center" style="background-color: rgb(48, 48, 48);">
                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg mr-2 text-gray-400" viewBox="0 0 16 16">
                                 <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
