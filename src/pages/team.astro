@@ -58,19 +58,19 @@ const team = teamData.filter(member => member.category === 'team');
         </div>
     </div>
 
-    <section 
-        id="our-team-intro" 
+    <section
+        id="our-team-intro"
         class="flex items-center mt-4 md:mx-4 min-h-[300px] md:min-h-[450px]"
         style={`
-            background-image: url(${teamBackground.src}); 
-            background-size: contain; /* This value was changed */
-            background-position: center; 
+            background-image: url(${teamBackground.src});
+            background-size: cover; /* This value was changed */
+            background-position: center;
             background-repeat: no-repeat;
         `}
     >
         <div class="container mx-auto px-4">
-            <div class="max-w-2xl">
-                <h2 class="text-4xl md:text-5xl mb-4 font-bold">"Our <span class="text-orange-500">Team</span></h2>
+            <div class="max-w-3xl"> {/* This class was changed */}
+                <h2 class="text-4xl md:text-5xl mb-4 font-bold">Our <span class="text-orange-500">Team</span></h2>
                 <p class="text-sm md:text-base text-gray-300">
                     We Have Some Of The Best Performers In The Industry.
                     <span class="md:hidden"><br></span>
