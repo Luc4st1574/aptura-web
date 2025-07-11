@@ -18,19 +18,28 @@ const team = teamData.filter(member => member.category === 'team');
 
     <section 
         id="leadership-intro" 
-        class="flex items-center mt-4 mx-4"
+        class="flex items-center mt-4 md:mx-4 min-h-[300px] md:min-h-[450px]"
         style={`
             background-image: url(${leadershipBackground.src}); 
             background-size: cover; 
             background-position: center; 
             background-repeat: no-repeat;
-            min-height: 450px; /* Ensures the image is visible */
         `}
     >
         <div class="container mx-auto px-4">
             <div class="max-w-3xl">
-                <h2 class="text-5xl mb-4">"Leadership & Investors</h2>
-                <p class="text-gray-300">Our leadership combines experience and strategic vision to guide every key decision. Together with committed investors, we drive the growth, innovation and sustainable development of our projects.</p>
+                <h2 class="text-4xl md:text-5xl mb-4 font-bold">"Leadership & Investors</h2>
+                <p class="text-sm md:text-base text-gray-300">
+                    Our leadership combines experience and strategic
+                    <span class="md:hidden"><br></span>
+                    vision to guide every key decision. together with
+                    <span class="md:hidden"><br></span>
+                    committed investors, we drive the growth,
+                    <span class="md:hidden"><br></span>
+                    innovation and sustainable development of our
+                    <span class="md:hidden"><br></span>
+                    projects.
+                </p>
             </div>
         </div>
     </section>
@@ -51,27 +60,36 @@ const team = teamData.filter(member => member.category === 'team');
 
     <section 
         id="our-team-intro" 
-        class="flex items-center mt-4 mx-4"
+        class="flex items-center mt-4 md:mx-4 min-h-[300px] md:min-h-[450px]"
         style={`
             background-image: url(${teamBackground.src}); 
-            background-size: cover; 
+            background-size: contain; /* This value was changed */
             background-position: center; 
             background-repeat: no-repeat;
-            min-height: 450px; /* Ensures the image is visible */
         `}
     >
         <div class="container mx-auto px-4">
             <div class="max-w-2xl">
-                <h2 class="text-5xl mb-4">"Our <span class="text-orange-500">Team</span></h2>
-                <p class="text-gray-300">We Have Some Of The Best Performers In The Industry. People Who Are Passionate About Solving Complex Challenges And Committed To The Growth Of Your Company.</p>
+                <h2 class="text-4xl md:text-5xl mb-4 font-bold">"Our <span class="text-orange-500">Team</span></h2>
+                <p class="text-sm md:text-base text-gray-300">
+                    We Have Some Of The Best Performers In The Industry.
+                    <span class="md:hidden"><br></span>
+                    People Who Are Passionate About Solving Complex
+                    <span class="md:hidden"><br></span>
+                    Challenges And Committed To The Growth Of Your
+                    <span class="md:hidden"><br></span>
+                    Company.
+                </p>
             </div>
         </div>
     </section>
 
     <div class="container mx-auto py-16 px-4">
-        <div class="flex flex-wrap justify-center gap-8">
+        {/* --- Switched back to Flexbox with a responsive gap --- */}
+        <div class="flex flex-wrap justify-center gap-4 md:gap-8">
             {team.map(member => (
-                <div class="team-member-card text-center basis-full sm:basis-[40%] md:basis-[18%]">
+                // --- Adjusted basis for the responsive gap ---
+                <div class="team-member-card text-center basis-[30%] md:basis-[18%]">
                     <div class="rounded-lg overflow-hidden mb-4 bg-black border border-black">
                         <Image src={devIcon} alt={`Icon for ${member.name}`} class="w-full h-auto" />
                     </div>

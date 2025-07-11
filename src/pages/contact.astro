@@ -8,70 +8,80 @@ import contactBackground from '../assets/contact-background.svg';
             <p>WE ARE INSPIRED BY COLLABORATING WITH PEOPLE LIKE YOU.</p>
         </div>
     </section>
-
+        
     <section 
         id="contact-content-wrapper" 
         class="w-full" 
         style={`
-            background-image: linear-gradient(to bottom, rgba(0,0,0,0) 80%, rgba(0,0,0,1) 100%), url(${contactBackground.src});
-            background-size: cover;
-            background-position: center;
+            /* Fade is now stronger, starting at 40% and ending at 90% */
+            background-image: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,1) 90%), url(${contactBackground.src});
+            background-size: cover; 
+            background-position: center; 
             background-repeat: no-repeat;
-            min-height: 450px; /* Ensures the image has enough space to display */
+            min-height: 450px;
+            background-attachment: scroll;
         `}
     >
-        <div class="container mx-auto py-20 px-4">
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+    <div class="container mx-auto py-20 px-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
 
-                <div class="left-column flex flex-col justify-between h-full">
-                    <h1 class="text-6xl font-medium mb-12">
-                        Let's Get<br/>
-                        --- <span class="text-orange-500">In Touch</span>
-                    </h1>
-                    <div class="address-info space-y-2 text-lg pb-17">
-                        <p>401 Park Avenue South, 10th Floor</p>
-                        <p>New York, NY 10016</p>
-                        <p>Office #947</p>
-                    </div>
+            <div class="left-column flex flex-col justify-between h-full">
+                <h1 class="text-6xl font-medium mb-12">
+                    Let's Get<br/>
+                    --- <span class="text-orange-500">In Touch</span>
+                </h1>
+                {/* --- Address for Desktop View --- */}
+                <div class="address-info space-y-2 text-lg pb-17 hidden md:block">
+                    <p>401 Park Avenue South, 10th Floor</p>
+                    <p>New York, NY 10016</p>
+                    <p>Office #947</p>
+                </div>
+            </div>
+
+            <div class="right-column">
+                <div class="intro-text space-y-4 mb-8">
+                    <p>We are always open to connect with creative minds, entrepreneurs & collaborators.</p>
+                    <p>Whether you have a project in mind, an idea to share or just want to say hello, we'd love to hear from you.</p>
                 </div>
 
-                <div class="right-column">
-                    <div class="intro-text space-y-4 mb-8">
-                        <p>We are always open to connect with creative minds, entrepreneurs & collaborators.</p>
-                        <p>Whether you have a project in mind, an idea to share or just want to say hello, we'd love to hear from you.</p>
+                <form id="contact-form" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="form-group">
+                            <label for="name" class="block text-sm mb-1">Name</label>
+                            <input type="text" id="name" name="name" placeholder="Name..." class="w-full border rounded-full p-3 text-white placeholder-white" style="background-color: rgb(20, 20, 20); border-color: rgb(69, 69, 69);">
+                        </div>
+                        <div class="form-group">
+                            <label for="last-name" class="block text-sm mb-1">Last Name</label>
+                            <input type="text" id="last-name" name="last-name" placeholder="Last name..." class="w-full border rounded-full p-3 text-white placeholder-white" style="background-color: rgb(20, 20, 20); border-color: rgb(69, 69, 69);">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" class="block text-sm mb-1">Phone</label>
+                            <input type="tel" id="phone" name="phone" placeholder="+51 | 000 000 00" class="w-full border rounded-full p-3 text-white placeholder-white" style="background-color: rgb(20, 20, 20); border-color: rgb(69, 69, 69);">
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="block text-sm mb-1">Email</label>
+                            <input type="email" id="email" name="email" placeholder="example1@gmail.com" class="w-full border rounded-full p-3 text-white placeholder-white" style="background-color: rgb(20, 20, 20); border-color: rgb(69, 69, 69);">
+                        </div>
                     </div>
+                    <div class="form-group">
+                        <label for="message" class="block text-sm mb-1">Message</label>
+                        <textarea id="message" name="message" rows="6" placeholder="Message..." class="w-full border rounded-3xl p-3 text-white placeholder-white" style="background-color: rgb(20, 20, 20); border-color: rgb(69, 69, 69);"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="w-full bg-orange-600 text-white font-bold py-3 rounded-full">
+                            Submit
+                        </button>
+                    </div>
+                </form>
 
-                    <form id="contact-form" class="space-y-6">
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                            <div class="form-group">
-                                <label for="name" class="block text-sm mb-1">Name</label>
-                                <input type="text" id="name" name="name" placeholder="Name..." class="w-full border rounded-full p-3 text-white placeholder-white" style="background-color: rgb(20, 20, 20); border-color: rgb(69, 69, 69);">
-                            </div>
-                            <div class="form-group">
-                                <label for="last-name" class="block text-sm mb-1">Last Name</label>
-                                <input type="text" id="last-name" name="last-name" placeholder="Last name..." class="w-full border rounded-full p-3 text-white placeholder-white" style="background-color: rgb(20, 20, 20); border-color: rgb(69, 69, 69);">
-                            </div>
-                            <div class="form-group">
-                                <label for="phone" class="block text-sm mb-1">Phone</label>
-                                <input type="tel" id="phone" name="phone" placeholder="+51 | 000 000 00" class="w-full border rounded-full p-3 text-white placeholder-white" style="background-color: rgb(20, 20, 20); border-color: rgb(69, 69, 69);">
-                            </div>
-                            <div class="form-group">
-                                <label for="email" class="block text-sm mb-1">Email</label>
-                                <input type="email" id="email" name="email" placeholder="example1@gmail.com" class="w-full border rounded-full p-3 text-white placeholder-white" style="background-color: rgb(20, 20, 20); border-color: rgb(69, 69, 69);">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label for="message" class="block text-sm mb-1">Message</label>
-                            <textarea id="message" name="message" rows="6" placeholder="Message..." class="w-full border rounded-3xl p-3 text-white placeholder-white" style="background-color: rgb(20, 20, 20); border-color: rgb(69, 69, 69);"></textarea>
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="w-full bg-orange-600 text-white font-bold py-3 rounded-full">
-                                Submit
-                            </button>
-                        </div>
-                    </form>
+                {/* --- Address for Mobile View --- */}
+                <div class="address-info space-y-2 text-lg mt-12 block md:hidden">
+                    <p>401 Park Avenue South, 10th Floor</p>
+                    <p>New York, NY 10016</p>
+                    <p>Office #947</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 </MainLayout>

@@ -14,80 +14,106 @@ import blackHoleRight from '../assets/black_hole_right.svg';
 import visionBackground from '../assets/vision-background.svg';
 ---
 <MainLayout pageBackground={mainBackground.src}>
-    <section
-        id="hero"
-        slot="hero"
-        class="relative w-full text-center overflow-hidden"
-    >
-        <div class="container mx-auto pt-16 md:pt-24">
-            <div class="relative z-[1] text-center">
-                <h1 class="font-bold text-white leading-none text-7xl sm:text-8xl md:text-[10rem] lg:text-[15rem] xl:text-[22rem]">APTURA</h1>
+    <div slot="hero">
+        
+        <section id="hero-main" class="relative w-full overflow-hidden text-center pt-24 md:pt-32">
+            <div class="relative container mx-auto">
+                <h1 class="font-bold text-white leading-tight text-8xl sm:text-8xl md:text-[10rem] lg:text-[15rem] xl:text-[22rem]">
+                    APTURA
+                </h1>
             </div>
-        </div>
+        </section>
 
-        <div class="absolute top-[28rem] left-0 w-full h-auto z-10">
-            <Image
-                src={blackHoleRight}
-                alt="Black hole on the left"
-                class="absolute left-10 md:left-48 w-48 h-48"
-            />
-            <Image
-                src={blackHoleLeft}
-                alt="Black hole on the right"
-                class="absolute right-10 md:right-48 w-48 h-48"
-            />
-        </div>
-
-        <div
-            class="relative w-full -mt-20 sm:-mt-24 md:-mt-32 lg:-mt-48 xl:-mt-[17rem]"
-        >
+        <section id="hero-planet" class="relative -mt-20 sm:-mt-24 md:-mt-32 lg:-mt-48 xl:-mt-[17rem]">
+            <div class="absolute top-[4rem] md:top-[16rem] left-0 w-full h-auto z-20">
+                <Image
+                    src={blackHoleRight}
+                    alt="Black hole on the left"
+                    class="absolute left-4 md:left-48 w-24 h-24 md:w-48 md:h-48"
+                />
+                <Image
+                    src={blackHoleLeft}
+                    alt="Black hole on the right"
+                    class="absolute right-4 md:right-48 w-24 h-24 md:w-48 md:h-48"
+                />
+            </div>
             <Image
                 src={planetBackground}
                 alt="Planet background"
                 class="w-full h-auto"
             />
-
             <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-4">
-
-                <div class="w-full max-w-4xl space-y-8 mt-80">
-
+                <div class="w-full max-w-4xl space-y-6 mt-16 md:-mt-56">
                     <div>
-                        <h2 class="text-5xl font-medium text-white md:text-8xl">We Promote<br>Brave Startups</h2>
-                            <p class="mt-4 text-base text-[rgb(178,178,178)] md:text-lg">
-                                Creating, Scaling, and Acquiring <span class="font-bold text-white">Next-Generation</span><br class="md:hidden"> Tech Ventures
-                            </p>
-                        <div class="mt-4">
-                            <a href="/contact" class="inline-flex items-center gap-2 rounded-full border border-white px-6 py-3 text-base text-white transition hover:bg-white hover:text-black">
+                        <h2 class="text-4xl font-medium text-white md:text-8xl">
+                            We Promote
+                            <br />
+                            Brave Startups
+                        </h2>
+                        <p class="mt-4 text-base text-[rgb(178,178,178)] md:text-lg">
+                            Creating, Scaling, and Acquiring{" "}
+                            <span class="font-bold text-white">Next-Generation</span>
+                            <br class="md:hidden" /> Tech Ventures
+                        </p>
+                        <div class="mt-6">
+                            <a
+                                href="/contact"
+                                class="inline-flex items-center gap-2 rounded-full border border-white px-6 py-3 text-base text-white transition hover:bg-white hover:text-black"
+                            >
                                 <span>Contact Us</span>
-                                <img src={contactIcon.src} alt="Contact us" class="h-4 w-4" />
+                                <img
+                                    src={contactIcon.src}
+                                    alt="Contact us"
+                                    class="h-4 w-4"
+                                />
                             </a>
                         </div>
                     </div>
-
-                    <div
-                        id="notification-banner"
-                        class="max-w-sm md:max-w-7xl mx-auto rounded-2xl bg-[rgb(25,25,25)] p-4 md:px-6 md:py-4 flex items-center gap-8 md:gap-4 mt-28"
-                    >
-                        <p class="text-[rgb(212,212,212)] text-xs md:text-sm md:flex-grow whitespace-nowrap">
-                            Aptura Labs is a <strong class="font-bold text-white">Pioneering Technology Studio</strong><br class="md:hidden"> that builds, scales, and acquires innovative SaaS<br class="md:hidden"> and AI-powered startups.
-                        </p>
-                        <button
-                            id="close-banner-button"
-                            type="button"
-                            aria-label="Close banner"
-                            class="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-white/10 border border-white/20 text-[rgb(212,212,212)] leading-none transition-colors hover:bg-white/20"
-                        >
-                            &times;
-                        </button>
-                    </div>
-
-                    <section id="intro-text" class="text-lg space-y-7 text-left">
-                        <p>Aptura Labs is a pioneering technology studio that builds, scales, and acquires innovative SaaS and AI-powered startups. Combining bold ideation, strategic acquisitions, and meticulous execution, we transform visionary concepts into market-leading ventures designed for lasting impact.</p>
-                        <p>Operating across North and South America, Aptura Labs merges deep market insights, cutting-edge technology, and entrepreneurial ability to reshape industries and redefine success. Whether incubating fresh ideas or acquiring promising companies, our focus remains consistent: drive growth, foster innovation, and scale intelligently.</p>
-                        <p>We don't just invest—we partner, build, and elevate.</p>
-                    </section>
-
                 </div>
+            </div>
+        </section>
+    </div>
+
+    <section id="hero-intro" class="relative bg-black pt-8 pb-16 px-6 md:-mt-[34rem]">
+        <div class="max-w-4xl mx-auto space-y-8">
+            <div
+                id="notification-banner"
+                class="max-w-xs md:max-w-7xl mx-auto rounded-2xl bg-[rgb(25,25,25)] p-4 flex items-center gap-4"
+            >
+                <p class="text-[rgb(212,212,212)] text-xs md:text-sm text-left">
+                    Aptura Labs is a{" "}
+                    <strong class="font-bold text-white">
+                        Pioneering Technology Studio
+                    </strong>{" "}
+                    that builds, scales, and acquires innovative SaaS and AI-powered
+                    startups.
+                </p>
+                <button
+                    id="close-banner-button"
+                    type="button"
+                    aria-label="Close banner"
+                    class="grid h-7 w-7 flex-shrink-0 place-items-center rounded-full bg-white/10 border border-white/20 text-[rgb(212,212,212)] leading-none transition-colors hover:bg-white/20"
+                >
+                    &times;
+                </button>
+            </div>
+            <div class="text-base md:text-lg space-y-7 text-left text-white">
+                <p>
+                    Aptura Labs is a pioneering technology studio that builds, scales,
+                    and acquires innovative SaaS and AI-powered startups. Combining
+                    bold ideation, strategic acquisitions, and meticulous execution, we
+                    transform visionary concepts into market-leading ventures designed
+                    for lasting impact.
+                </p>
+                <p>
+                    Operating across North and South America, Aptura Labs merges deep
+                    market insights, cutting-edge technology, and entrepreneurial
+                    ability to reshape industries and redefine success. Whether
+                    incubating fresh ideas or acquiring promising companies, our focus
+                    remains consistent: drive growth, foster innovation, and scale
+                    intelligently.
+                </p>
+                <p>We don't just invest—we partner, build, and elevate.</p>
             </div>
         </div>
     </section>
@@ -104,10 +130,9 @@ import visionBackground from '../assets/vision-background.svg';
     >
         <div class="container mx-auto px-4">
 
-            <div class="text-center mb-24">
+            <div class="text-center mb-24 mt-10">
                 <h2 class="text-6xl font-light inline-flex items-baseline">
-                    <span class="text-9xl text-gray-500">"</span>
-                    <span>Our Values</span>
+                    <span><strong>Our Values</span>
                 </h2>
             </div>
 
@@ -150,11 +175,10 @@ import visionBackground from '../assets/vision-background.svg';
             background-repeat: no-repeat;
         `}
     >
-        <div class="container mx-auto px-4 h-full">
+        <div class="container mx-auto px-4 h-full mt-10">
 
             <div class="absolute top-[5%] left-1/2 -translate-x-1/2 text-center">
                 <h2 class="text-6xl font-light inline-flex items-baseline">
-                    <span class="text-9xl text-gray-500 mr-2">"</span>
                     <span>Our Vision</span>
                 </h2>
             </div>

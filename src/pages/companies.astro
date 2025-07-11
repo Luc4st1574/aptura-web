@@ -27,19 +27,26 @@ function getLogo(logoFilename: string) {
 
     <section 
         id="companies-header" 
-        class="flex items-center mt-4 mx-4"
+        class="flex items-center mt-4 md:mx-4 min-h-[300px] md:min-h-[450px]"
         style={`
             background-image: url(${leadershipBackground.src}); 
             background-size: cover; 
             background-position: center; 
             background-repeat: no-repeat;
-            min-height: 450px; /* Ensures the image is visible */
         `}
     >
         <div class="container mx-auto px-4">
             <div class="max-w-3xl">
-                <h2 class="text-5xl mb-4">"Our <span class="text-orange-500">Companies</span></h2>
-                <p class="text-gray-300">We Design Experiences Alongside Some Of The World's Most Influential Entrepreneurs. Our Approach Combines Vision, Innovation And Precise Execution.</p>
+                <h2 class="text-4xl md:text-5xl mb-4 font-bold">"Our <span class="text-orange-500">Companies</span></h2>
+                <p class="text-sm md:text-base text-gray-300">
+                    We Design Experiences Alongside Some Of
+                    <span class="md:hidden"><br></span>
+                    The World's most Influential Entrepreneurs.
+                    <span class="md:hidden"><br></span>
+                    Our Approach Combines Vision, Innovation
+                    <span class="md:hidden"><br></span>
+                    And Precise Execution.
+                </p>
             </div>
         </div>
     </section>
